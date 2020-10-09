@@ -101,7 +101,7 @@ app.controller('studentCtrl', function ($scope) {
             }).catch(err => console.error(err));
         }
         liff.init({
-            liffId: "1654990369-jMAeYgJE"
+            liffId: "1655086923-4vwLKpXP"
         }, () => {
             if (liff.isLoggedIn()) {
                 runApp()
