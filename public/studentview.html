@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="th" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>ข้อมูลส่วนตัว / e-Profile</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+    <script src="config.js"></script>
+
+
+
+    <style>
+        @font-face {
+            font-family: RSU;
+            src: url(font/RSU_Regular.ttf);
+        }
+
+        body {
+            font-family: RSU;
+        }
+    </style>
+</head>
+
+<body ng-controller="studentCtrl" ng-init="initLIFF()">
+
+    <form ng-submit="addStudent(student,profile)">
+        <div class="container text-center">
+            <div class="text-center"><img width="100px" height="100px" class="rounded-circle"
+                    ng-src="{{profile.pictureUrl}}"></div><br>
+            ชื่อ-นามสกุล
+            <input required class="form-control text-center" type="text" placeholder="กรอกชื่อ-นามสกุล"
+                ng-model="student.name">
+            โรงเรียน
+            <input required class="form-control text-center" type="text" placeholder="กรอกชื่อโรงเรียน"
+                ng-model="student.school">
+            เบอร์โทร
+            <input required class="form-control text-center" type="tel" maxlength="10"
+                placeholder="กรอกเบอร์โทรรูปแบบนี้ 0812345678" pattern="[0]{1}[0-9]{9}" ng-model="student.mobile">
+
+            <br>
+            <button ng-if="profile&&student.certificate==false" type="submit"
+                class="btn btn-success">ปรับปรุงข้อมูลส่วนตัว</button><br>
+            <div ng-if="student.certificate==true" class="text-center">
+                ไม่อนุญาตให้เปลี่ยนแปลงข้อมูลเนื่องจากออกประกาศนีบัตรแล้ว</div>
+
+        </div>
+    </form>
+
+    <script src="studentcontroller.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+</body>
+</body>
+
+</html>
